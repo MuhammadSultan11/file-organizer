@@ -1,10 +1,10 @@
 import os
 import shutil
 
-# ✅ Set your folder path here
+# Set your folder path here
 folder_path = r"C:\Users\muham\Downloads"
 
-# ✅ File types and their extensions
+# File types and their extensions
 file_types = {
     "Images": [".jpg", ".jpeg", ".png", ".gif", ".bmp", ".webp"],
     "Documents": [".pdf", ".docx", ".txt", ".xlsx", ".pptx"],
@@ -30,7 +30,7 @@ def create_folder(folder_name):
     path = os.path.join(folder_path, folder_name)
     if not os.path.exists(path):
         os.makedirs(path)
-        print(f"  📂 Folder created: {folder_name}")
+        print(f" Folder created: {folder_name}")
 
 
 def move_files():
@@ -38,7 +38,7 @@ def move_files():
 
     # Check if the target folder exists
     if not os.path.exists(folder_path):
-        print(f"❌ Error: '{folder_path}' folder not found!")
+        print(f"Error: '{folder_path}' folder not found!")
         return
 
     count = 0  # track how many files were moved
@@ -54,12 +54,12 @@ def move_files():
             destination = os.path.join(folder_path, category, file)
             shutil.move(file_path, destination)
 
-            print(f"  ✅ {file}  →  {category}/")
+            print(f"{file}  →  {category}/")
             count += 1
 
-    print(f"\n🎉 Done! {count} files organized successfully.")
+    print(f"\n Done! {count} files organized successfully.")
 
 
-# ▶️ Run the program
-print("🚀 File Organizer Starting...\n")
+#  Run the program
+print(" File Organizer Starting...\n")
 move_files()
