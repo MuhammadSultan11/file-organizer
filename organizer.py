@@ -1,10 +1,10 @@
 import os
 import shutil
 
-# ✅ Apna path yahan set karo
+# ✅ Set your folder path here
 folder_path = r"C:\Users\muham\Downloads"
 
-# ✅ File types aur unke extensions
+# ✅ File types and their extensions
 file_types = {
     "Images": [".jpg", ".jpeg", ".png", ".gif", ".bmp", ".webp"],
     "Documents": [".pdf", ".docx", ".txt", ".xlsx", ".pptx"],
@@ -15,7 +15,7 @@ file_types = {
 
 
 def get_category(filename):
-    """File ka category dhundo extension se"""
+    """Find the category of a file based on its extension"""
     _, ext = os.path.splitext(filename)
     ext = ext.lower()
 
@@ -26,27 +26,27 @@ def get_category(filename):
 
 
 def create_folder(folder_name):
-    """Folder banao agar exist nahi karta"""
+    """Create a folder if it does not already exist"""
     path = os.path.join(folder_path, folder_name)
     if not os.path.exists(path):
         os.makedirs(path)
-        print(f"  📂 Folder banaya: {folder_name}")
+        print(f"  📂 Folder created: {folder_name}")
 
 
 def move_files():
-    """Saari files ko organize karo"""
+    """Move all files into their organized folders"""
 
-    # Check karo folder exist karta hai ya nahi
+    # Check if the target folder exists
     if not os.path.exists(folder_path):
-        print(f"❌ Error: '{folder_path}' folder nahi mila!")
+        print(f"❌ Error: '{folder_path}' folder not found!")
         return
 
-    count = 0  # kitni files move hui
+    count = 0  # track how many files were moved
 
     for file in os.listdir(folder_path):
         file_path = os.path.join(folder_path, file)
 
-        # Sirf files ko move karo, folders ko nahi
+        # Move files only, skip folders
         if os.path.isfile(file_path):
             category = get_category(file)
             create_folder(category)
@@ -57,9 +57,9 @@ def move_files():
             print(f"  ✅ {file}  →  {category}/")
             count += 1
 
-    print(f"\n🎉 Done! {count} files organize ho gayi.")
+    print(f"\n🎉 Done! {count} files organized successfully.")
 
 
-# ▶️ Program chalaao
-print("🚀 File Organizer Shuru Ho Raha Hai...\n")
+# ▶️ Run the program
+print("🚀 File Organizer Starting...\n")
 move_files()
